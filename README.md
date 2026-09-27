@@ -12,6 +12,10 @@ Reimplementação em TypeScript do cenário principal do projeto Ruby: busca de 
 - relatório HTML e JUnit, trace, vídeo e screenshot em falhas;
 - evidência em imagem da busca concluída, anexada ao relatório.
 
+## Escopo seguro para produção
+
+Esta suíte é limitada a consultas públicas. Ela não executa login, checkout, dados pessoais, pagamento, confirmação ou criação de pedido.
+
 ## Pré-requisitos
 
 - Node.js 20 ou superior.
@@ -72,8 +76,10 @@ Em uma esteira de CI, o arquivo `test-results/junit.xml` pode ser publicado como
 
 ```text
 tests/
-  flight-search.spec.ts       # cenário de negócio principal
+  flight-search.spec.ts       # cenário principal e resultados
+  safe-search-options.spec.ts # fluxos públicos adicionais
   pages/flight-search.page.ts # Page Object e validações da página
+  support/flight-data.ts      # massa dinâmica para voos
 playwright.config.ts          # browser, evidências e relatório
 ```
 
