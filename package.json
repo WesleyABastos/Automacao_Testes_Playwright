@@ -1,0 +1,19 @@
+{
+  "name": "desafio-zupper-playwright",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Automação da busca de voos Zupper com Playwright",
+  "scripts": {
+    "test": "playwright test",
+    "test:smoke": "playwright test --grep=\\[SMOKE\\]",
+    "test:headed": "playwright test --headed",
+    "test:debug": "playwright test --debug",
+    "test:ui": "playwright test --ui",
+    "report": "playwright show-report"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.58.0",
+    "@types/node": "^24.0.0",
+    "typescript": "^5.9.0"
+  }
+}
