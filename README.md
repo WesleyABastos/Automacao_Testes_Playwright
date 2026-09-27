@@ -14,7 +14,9 @@ Reimplementação em TypeScript do cenário principal do projeto Ruby: busca de 
 
 ## Escopo seguro para produção
 
-Esta suíte é limitada a consultas públicas. Ela não executa login, checkout, dados pessoais, pagamento, confirmação ou criação de pedido.
+Esta suíte é intencionalmente limitada a consultas públicas. Ela cobre autocomplete, campos obrigatórios, ida e volta, só ida, multi-destinos, resultados, filtros visíveis e os motores de hospedagens e pacotes.
+
+Não há testes de login, seleção de oferta para checkout, dados de viajantes, dados pessoais, pagamento, confirmação ou criação de pedido. Assim, ela pode ser usada como exemplo público sem risco de realizar uma compra.
 
 ## Pré-requisitos
 
@@ -76,8 +78,9 @@ Em uma esteira de CI, o arquivo `test-results/junit.xml` pode ser publicado como
 
 ```text
 tests/
-  flight-search.spec.ts       # cenário principal e resultados
-  safe-search-options.spec.ts # fluxos públicos adicionais
+  flights/                    # ida e volta, só ida, multi-destinos e resultados
+  hotels/                     # motor de busca de hospedagens
+  packages/                   # motor de busca de pacotes
   pages/flight-search.page.ts # Page Object e validações da página
   support/flight-data.ts      # massa dinâmica para voos
 playwright.config.ts          # browser, evidências e relatório

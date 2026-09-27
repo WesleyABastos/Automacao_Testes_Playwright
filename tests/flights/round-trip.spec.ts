@@ -1,9 +1,9 @@
 import { test } from '@playwright/test';
-import { FlightSearchPage } from './pages/flight-search.page';
-import { createFamilyRoundTrip } from './support/flight-data';
+import { FlightSearchPage } from '../pages/flight-search.page';
+import { createFamilyRoundTrip } from '../support/flight-data';
 
-test.describe('Busca de passagens aéreas', () => {
-  test('[SMOKE] ida e volta para 2 adultos, 1 criança e 1 bebê', async ({ page }, testInfo) => {
+test.describe('Voos | Ida e volta', () => {
+  test('[SMOKE] pesquisa para 2 adultos, 1 criança e 1 bebê', async ({ page }, testInfo) => {
     const flightSearch = new FlightSearchPage(page);
     const trip = createFamilyRoundTrip();
 
@@ -15,9 +15,8 @@ test.describe('Busca de passagens aéreas', () => {
       await flightSearch.search(trip);
     });
 
-    await test.step('Validar tarifas, voos e controles de resultado', async () => {
+    await test.step('Validar tarifas e voos disponíveis', async () => {
       await flightSearch.expectAvailableFlights();
-      await flightSearch.expectResultsControls();
     });
 
     await testInfo.attach('resultado-da-busca', {
